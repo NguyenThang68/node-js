@@ -1,10 +1,5 @@
 pipeline {
     agent any
-    #environment {
-    #    ACR_LOGINSERVER = credentials('ACR_LOGINSERVER')
-    #	ACR_ID = credentials('ACR_ID')
-	#	ACR_PASSWORD = credentials('ACR_PASSWORD')
-    }
     stages {
         stage('Clone') {
             steps {
