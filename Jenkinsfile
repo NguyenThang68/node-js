@@ -16,14 +16,13 @@ pipeline {
                     //sh 'docker run -d -p 8081:8081 --name nodejs myregistryaksnqt.azurecr.io/nodejs:v1'
                 }
             }
+        }
         stage('Apply AKS'){
             steps {
                 kubeconfig(credentialsId: 'AKS_ID', serverUrl: 'https://jenkinaks-dns-4139fff3.hcp.eastus.azmk8s.io:443') {
-                // some block
-                sh 'kubectl apply -f deployment.yaml'
-                  }
+                    sh 'kubectl apply -f deployment.yaml'
+                }
             }
-        }
         }
     }
 }
