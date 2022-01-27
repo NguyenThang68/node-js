@@ -3,12 +3,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: mypvc
 spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: managed-premium
   resources:
     requests:
       storage: 5Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
 ---
 apiVersion: apps/v1
 kind: Deployment
