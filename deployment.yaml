@@ -1,3 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mypvc
+spec:
+  resources:
+    requests:
+      storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,6 +32,10 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 8081
+      volumes:
+      - name: volume
+        persistentVolumeClaim:
+        claimName: mypvc
 ---
 apiVersion: v1
 kind: Service
