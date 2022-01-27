@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Apply AKS'){
             steps {
-                withkubeconfig(credentialsId: 'AKS_ID', serverUrl: 'https://jenkinaks-dns-4139fff3.hcp.eastus.azmk8s.io:443') {
+                withkubeconfig(credentialsId: 'AKS_ID', serverUrl: 'https://jenkinaks-dns-4139fff3.hcp.eastus.azmk8s.io') {
                     sh 'kubectl apply -f deployment.yaml'
                 }
             }
