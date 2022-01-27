@@ -20,15 +20,6 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 8081
-      volumeMounts:
-      - name: azure
-        mountPath: /mnt/azure
-      volumes:
-      - name: azure
-        azureDisk:
-          kind: Managed
-          diskName: aksdisk
-          diskURI: /subscriptions/809dc5c8-eb18-4a5d-997c-4b1cb28598f4/resourceGroups/Jenkins/providers/Microsoft.Compute/disks/aksdisk
 ---
 apiVersion: v1
 kind: Service
