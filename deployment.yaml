@@ -20,6 +20,9 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 8081
+      volumeMounts:
+      - name: azure
+        mountPath: /mnt/azure
       volumes:
       - name: azure
         azureDisk:
