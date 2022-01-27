@@ -14,9 +14,16 @@ pipeline {
                     sh 'docker tag thekop68/nodejs:v1 myregistryaksnqt.azurecr.io/nodejs:v1'
                     sh 'docker push myregistryaksnqt.azurecr.io/nodejs:v1'
                     //sh 'docker run -d -p 8081:8081 --name nodejs myregistryaksnqt.azurecr.io/nodejs:v1'
-                    sh 'kubectl apply -f deployment.yaml'
                 }
             }
+        stage('Apply AKS'){
+            steps {
+                kubeconfig(credentialsId: 'AKS_ID', serverUrl: 'https://jenkinaks-dns-4139fff3.hcp.eastus.azmk8s.io:443') {
+                // some block
+                sh 'kubectl apply -f deployment.yaml'
+                  }
+            }
+        }
         }
     }
 }
