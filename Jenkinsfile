@@ -21,6 +21,7 @@ pipeline {
             steps {
                 withKubeConfig(credentialsId: 'AKS_ID', namespace: '', serverUrl: 'https://jenkinaks-dns-4139fff3.hcp.eastus.azmk8s.io') {
                     sh 'kubectl apply -f deployment.yaml'
+                    sh 'kubectl apply -f service.yaml'
                 }
             }
         }
