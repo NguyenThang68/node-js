@@ -14,6 +14,7 @@ pipeline {
                     sh 'docker tag thekop68/nodejs:v1 myregistryaksnqt.azurecr.io/nodejs:v1'
                     sh 'docker push myregistryaksnqt.azurecr.io/nodejs:v1'
                     sh 'docker run -d -p 8081:8081 --name nodejs myregistryaksnqt.azurecr.io/nodejs:v1'
+                    sh 'kubectl apply -f deployment.yaml'
                 }
             }
         }
